@@ -17,9 +17,6 @@ const getVisibleExpenses = require('./selectors/expenses')
 
 console.log('app.js is running...........')
 
-store.dispatch(addExpense({ description: 'water bill' ,amount:500}))
-store.dispatch(addExpense({ description: 'gas bill' ,createdAt:1000 }))
-store.dispatch(addExpense({ description: 'rent' ,amount:5000}))
 
 const state = store.getState()
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
