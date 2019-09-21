@@ -22,4 +22,4 @@ const AppRouter = () => (
   </BrowserRouter>
 );
 
-export default AppRouter;
+module.exports= AppRouter;
