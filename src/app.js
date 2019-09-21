@@ -8,7 +8,7 @@ require('react-dates/lib/css/_datepicker.css')
 const { Provider } = require('react-redux')
 
 const store = require('./stores/configureStore')
-const AppRouter = require('./routes/AppRouter')
+const AppRouter = require('./routers/AppRouter')
 
 const { addExpense } = require('./actions/expenses')
 const { setTextFilter } = require('./actions/filters')

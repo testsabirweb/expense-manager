@@ -1,30 +1,49 @@
-const path = require('path')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-    entry: './src/app.js',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
-    },
-    module: {
-        rules: [{//whenever see a file with extension .js and not in node_modules
-            loader: 'babel-loader',
-            test: /\.js$/,
-            exclude: /node_modules/
+module.exports = (env) => {
+    const isProduction = env === 'production';
+    const CSSExtract = new MiniCssExtractPlugin('styles.css');
+
+    return {
+        entry: './src/app.js',
+        output: {
+            path: path.join(__dirname, 'public'),
+            filename: 'bundle.js'
         },
-        {
-            test: /\.s?css$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                'sass-loader'
+        module: {
+            rules: [
+                {
+                    loader: 'babel-loader',
+                    test: /\.js$/,
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.s?css$/,
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                sourceMap: true,
+                                // you can specify a publicPath here
+                                // by default it uses publicPath in webpackOptions.output
+                                publicPath: '../',
+                                hmr: process.env.NODE_ENV === 'development',
+                            },
+                        },
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                }
             ]
-        }]
-    },
-    devtool: 'cheap-module-eval-source-map',// there are other dev tools goto webpack/devtools/sourcemaps
-    devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true
-    }
-
-}
+        },
+        plugins: [
+            CSSExtract
+        ],
+        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devServer: {
+            contentBase: path.join(__dirname, 'public'),
+            historyApiFallback: true
+        }
+    };
+};
