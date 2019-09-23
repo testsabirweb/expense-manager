@@ -5,6 +5,7 @@ exports[`should render ExpenseDashBoardPage correctly 1`] = `
   <h1>
     <[object Object] />
     <[object Object] />
+    <[object Object] />
   </h1>
 </div>
 `;
