@@ -15,6 +15,7 @@ const { setTextFilter } = require('./actions/filters')
 
 const getVisibleExpenses = require('./selectors/expenses')
 
+import './firebase/firebase';
 console.log('app.js is running...........')
 
 const state = store.getState()

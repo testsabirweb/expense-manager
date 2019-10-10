@@ -3,24 +3,29 @@ const { connect } = require('react-redux')
 const ExpenseForm = require('./ExpenseForm')
 const { editExpense, removeExpense } = require('./../actions/expenses')
 
-const EditExpensePage = (props) => {
-    return (
-        <div>
-            <ExpenseForm
-                expense={props.expense}
-                onSubmit={(expense) => {
-                    props.dispatch(editExpense(props.expense.id, expense))
-                    props.history.push('/')//for redirectonto home page
-                }
-                }
-            />
-            <button onClick={(e) => {
-                props.dispatch(removeExpense({ id: props.expense.id }))
-                props.history.push('/')//for redirectonto home page
-            }}>
-            REMOVE</button>
-        </div>
-    )
+export class EditExpensePage extends React.Component {
+    onSubmit = (expense) => {
+        this.props.editExpense(this.props.expense.id, expense)
+        this.props.history.push('/')//for redirectonto home page
+    }
+    onClick = (e) => {
+        this.props.removeExpense({ id: this.props.expense.id })
+        this.props.history.push('/')//for redirectonto home page
+    }
+    render() {
+        return (
+            <div>
+                <ExpenseForm
+                    expense={this.props.expense}
+                    onSubmit={this.onSubmit}
+                />
+                <button
+                    onClick={this.onClick}
+                > REMOVE
+                </button>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state, props) => {
@@ -29,7 +34,12 @@ const mapStateToProps = (state, props) => {
             return expense.id === props.match.params.id
         })
     }
-
+}
+const mapDispatchToProps = (dispatch,props) => {
+    return {
+        editExpense:(id,expense)=>dispatch(editExpense(id,expense)),
+        removeExpense:(data)=>dispatch(removeExpense(data))
+    }
 }
 
-module.exports = connect(mapStateToProps)(EditExpensePage)
+export default connect(mapStateToProps,mapDispatchToProps)(EditExpensePage)

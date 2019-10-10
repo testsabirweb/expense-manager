@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
         expenses: selectExpenses(state.expenses, state.filters)
     }
 }
-module.exports= connect(mapStateToProps)(ExpenseList)
+export default connect(mapStateToProps)(ExpenseList)
 
 // const ConnectedExpenseList = connect((state) => {
 //     return {

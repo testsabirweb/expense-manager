@@ -1,6 +1,6 @@
 const React = require('react');
-const ExpenseList = require('./ExpenseList')
-const ExpenseListFilters = require('./ExpenseListFilters');
+import ExpenseList from './ExpenseList'
+import ExpenseListFilters from'./ExpenseListFilters'
 import ExpensesSummary from './ExpensesSummary';
 
 const ExpenseDashboardPage = () => {
@@ -15,4 +15,4 @@ const ExpenseDashboardPage = () => {
     )
 }
 
-module.exports = ExpenseDashboardPage
+export default ExpenseDashboardPage
