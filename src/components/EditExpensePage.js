@@ -1,7 +1,7 @@
 const React = require('react');
 const { connect } = require('react-redux')
 const ExpenseForm = require('./ExpenseForm')
-const { editExpense, removeExpense } = require('./../actions/expenses')
+const { editExpense, startRemoveExpense } = require('./../actions/expenses')
 
 export class EditExpensePage extends React.Component {
     onSubmit = (expense) => {
@@ -9,7 +9,7 @@ export class EditExpensePage extends React.Component {
         this.props.history.push('/')//for redirectonto home page
     }
     onClick = (e) => {
-        this.props.removeExpense({ id: this.props.expense.id })
+        this.props.startRemoveExpense({ id: this.props.expense.id })
         this.props.history.push('/')//for redirectonto home page
     }
     render() {
@@ -38,7 +38,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch,props) => {
     return {
         editExpense:(id,expense)=>dispatch(editExpense(id,expense)),
-        removeExpense:(data)=>dispatch(removeExpense(data))
+        startRemoveExpense:(data)=>dispatch(startRemoveExpense(data))
     }
 }
 
