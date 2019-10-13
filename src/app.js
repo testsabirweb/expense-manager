@@ -10,7 +10,7 @@ const { Provider } = require('react-redux')
 const store = require('./stores/configureStore')
 const AppRouter = require('./routers/AppRouter')
 
-const { addExpense } = require('./actions/expenses')
+const { startSetExpenses } = require('./actions/expenses')
 const { setTextFilter } = require('./actions/filters')
 
 const getVisibleExpenses = require('./selectors/expenses')
@@ -28,5 +28,9 @@ const jsx = (
     </Provider>
 )
 
-ReactDOM.render(jsx, appRoot)
+ReactDOM.render(<p>loading....</p>, appRoot)
+
+store.dispatch(startSetExpenses()).then(()=>{
+    ReactDOM.render(jsx, appRoot)
+})
 

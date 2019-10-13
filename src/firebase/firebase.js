@@ -18,17 +18,17 @@ const database = firebase.database()
 export { firebase, database as default }
 
 
-database.ref('expenses')
-    .on('value',(snapshot)=>{  //*****value is firebase event there are other also like child_removed,child_added,child_changed refer documentation */
-        const expenses=[]
-        snapshot.forEach((childSnapshot) => {
-            expenses.push({
-                id:childSnapshot.key,
-                ...childSnapshot.val()
-            })
-        });
-        console.log(expenses)
-    })
+// database.ref('expenses')
+//     .on('value',(snapshot)=>{  //*****value is firebase event there are other also like child_removed,child_added,child_changed refer documentation */
+//         const expenses=[]
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id:childSnapshot.key,
+//                 ...childSnapshot.val()
+//             })
+//         });
+//         console.log(expenses)
+//     })
 
 
 // //

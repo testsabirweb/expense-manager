@@ -1,13 +1,14 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import { SIGCHLD } from 'constants';
 
 // ADD_EXPENSE
-export const addExpense = (expense) => ({
+export const addExpense = (expense) => ({//for redux store
   type: 'ADD_EXPENSE',
   expense
 });
 
-export const startAddExpense = (expenseData = {}) => {
+export const startAddExpense = (expenseData = {}) => {//for firebase
   return (dispatch) => {
     const {
       description = '',////setting default data
@@ -38,3 +39,25 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+//SET_EXPENSE     FOR REDUX STORE
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+////START_SET_EXPENSES            ///FOR FETCHING DATA FROM FIREBASE
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value')
+      .then((snapshot) => {
+        const expenses = []
+        snapshot.forEach((childSnapshot) => {
+          expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          })
+        })
+        dispatch(setExpenses(expenses))
+      })
+  }
+}
