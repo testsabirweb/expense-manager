@@ -15,7 +15,7 @@ const { setTextFilter } = require('./actions/filters')
 
 const getVisibleExpenses = require('./selectors/expenses')
 
-import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 console.log('app.js is running...........')
 
 const state = store.getState()
@@ -29,7 +29,14 @@ const jsx = (
 
 ReactDOM.render(<p>loading....</p>, appRoot)
 
-store.dispatch(startSetExpenses()).then(()=>{
+store.dispatch(startSetExpenses()).then(() => {
     ReactDOM.render(jsx, appRoot)
 })
 
+firebase.auth().onAuthStateChanged((user)=>{
+    if (user) {
+        console.log('log in')        
+    } else {
+        console.log('log out')
+    }
+})
