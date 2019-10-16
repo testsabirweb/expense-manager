@@ -8,10 +8,10 @@ require('react-dates/lib/css/_datepicker.css')
 const { Provider } = require('react-redux')
 
 const store = require('./stores/configureStore')
-const AppRouter = require('./routers/AppRouter')
+import AppRouter, { history } from './routers/AppRouter'
 
 const { startSetExpenses } = require('./actions/expenses')
-const { setTextFilter } = require('./actions/filters')
+import { login, logout } from './actions/auth'
 
 const getVisibleExpenses = require('./selectors/expenses')
 
@@ -29,14 +29,26 @@ const jsx = (
 
 ReactDOM.render(<p>loading....</p>, appRoot)
 
-store.dispatch(startSetExpenses()).then(() => {
-    ReactDOM.render(jsx, appRoot)
-})
+let hasRendered = false;
+const renderApp = () => {
+    if (!hasRendered) {
+        ReactDOM.render(jsx, appRoot)
+        hasRendered = true
+    }
+}
 
-firebase.auth().onAuthStateChanged((user)=>{
+firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log('log in')        
+        store.dispatch(login(user.uid))
+        store.dispatch(startSetExpenses()).then(() => {
+            renderApp()
+            if (history.location.pathname === '/') {
+                history.push('/dashboard')
+            }
+        })
     } else {
-        console.log('log out')
+        store.dispatch(logout())
+        renderApp()
+        history.push('/')
     }
 })
