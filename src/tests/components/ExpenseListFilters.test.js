@@ -4,7 +4,15 @@ import { ExpenseListFilters } from './../../components/ExpenseListFilters'
 import { filter1, filter2 } from './../fixtures/filters'
 import moment from 'moment'
 
-let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
+let setTextFilter,
+    sortByDate,
+    sortByAmount,
+    setStartDate,
+    setEndDate,
+    setCategoryAll,
+    setCategoryExpense,
+    setCategorySaving,
+    wrapper;
 
 beforeEach(() => {
     setTextFilter = jest.fn()
@@ -12,6 +20,9 @@ beforeEach(() => {
     sortByAmount = jest.fn()
     setStartDate = jest.fn()
     setEndDate = jest.fn()
+    setCategoryAll = jest.fn()
+    setCategoryExpense = jest.fn()
+    setCategorySaving = jest.fn()
     wrapper = shallow(
         <ExpenseListFilters
             filters={filter1}
@@ -20,6 +31,9 @@ beforeEach(() => {
             sortByAmount={sortByAmount}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
+            setCategoryAll={setCategoryAll}
+            setCategoryExpense={setCategoryExpense}
+            setCategorySaving={setCategorySaving}
         />
     )
 })
@@ -44,7 +58,7 @@ test('should handle text change', () => {
 test('should sort by date', () => {
     const value = 'date'
     wrapper.setProps({ filters: filter2 })
-    wrapper.find('select').simulate('change', {
+    wrapper.find('select').at(1).simulate('change', {
         target: { value }
     })
     expect(sortByDate).toHaveBeenCalled()
@@ -52,7 +66,7 @@ test('should sort by date', () => {
 
 test('should sort by amount', () => {
     const value = 'amount'
-    wrapper.find('select').simulate('change', {
+    wrapper.find('select').at(1).simulate('change', {
         target: { value }
     })
     expect(sortByAmount).toHaveBeenCalled()
@@ -72,3 +86,27 @@ test('should handle date focus change', () => {
     expect(wrapper.state('calendarFocused')).toBe(calendarFocused)
 })
 
+test('should set category all', () => {
+    const value = 'all'
+    wrapper.setProps({ filters: filter2 })
+    wrapper.find('select').at(0).simulate('change', {
+        target: { value }
+    })
+    expect(setCategoryAll).toHaveBeenCalled()
+})
+
+test('should set category expense', () => {
+    const value = 'expense'
+    wrapper.find('select').at(0).simulate('change', {
+        target: { value }
+    })
+    expect(setCategoryExpense).toHaveBeenCalled()
+})
+
+test('should set category saving', () => {
+    const value = 'saving'
+    wrapper.find('select').at(0).simulate('change', {
+        target: { value }
+    })
+    expect(setCategorySaving).toHaveBeenCalled()
+})

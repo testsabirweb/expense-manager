@@ -5,7 +5,10 @@ const {
     sortByAmount,
     sortByDate,
     setEndDate,
-    setStartDate
+    setStartDate,
+    setCategoryAll,
+    setCategoryExpense,
+    setCategorySaving
 } = require('./../actions/filters')
 const { DateRangePicker } = require('react-dates')
 
@@ -35,6 +38,17 @@ export class ExpenseListFilters extends React.Component {
             this.props.sortByAmount()
         }
     }
+    onCategoryChange = (e) => {
+        if (e.target.value === "all") {
+            this.props.setCategoryAll()
+        }
+        else if (e.target.value === "expense") {
+            this.props.setCategoryExpense()
+        }
+        else if (e.target.value === "saving") {
+            this.props.setCategorySaving()
+        }
+    }
     render() {
         return (
             <div>
@@ -43,10 +57,18 @@ export class ExpenseListFilters extends React.Component {
                     value={this.props.filters.text}/////here we set the value of an element
                     onChange={this.onTextChange}
                 />
-
+                <select
+                    value={this.props.filters.category}
+                    onChange={this.onCategoryChange}
+                >
+                    <option value="all">All</option>
+                    <option value="expense">Expenditure</option>
+                    <option value="saving">Saving</option>
+                </select>
                 <select
                     value={this.props.filters.sortBy}
-                    onChange={this.onSortChange}>
+                    onChange={this.onSortChange}
+                >
                     <option value="date">Date</option>
                     <option value="amount">Amount</option>
                 </select>
@@ -72,14 +94,17 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-    return{
-        setTextFilter:(text)=>dispatch(setTextFilter(text)),
-        sortByDate:()=>dispatch(sortByDate()),
-        sortByAmount:()=>dispatch(sortByAmount()),
-        setStartDate:(startDate)=>dispatch(setStartDate(startDate)),
-        setEndDate:(endDate)=>dispatch(setEndDate(endDate))
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setTextFilter: (text) => dispatch(setTextFilter(text)),
+        sortByDate: () => dispatch(sortByDate()),
+        sortByAmount: () => dispatch(sortByAmount()),
+        setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+        setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+        setCategoryAll: () => dispatch(setCategoryAll()),
+        setCategoryExpense: () => dispatch(setCategoryExpense()),
+        setCategorySaving: () => dispatch(setCategorySaving())
     }
 }
-const ConnectedExpenseListFilters = connect(mapStateToProps,mapDispatchToProps)(ExpenseListFilters)
+const ConnectedExpenseListFilters = connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters)
 export default ConnectedExpenseListFilters

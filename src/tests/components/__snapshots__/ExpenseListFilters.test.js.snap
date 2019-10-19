@@ -9,6 +9,26 @@ exports[`should render ExpenseListFilter on filter1 1`] = `
   />
   <select
     onChange={[Function]}
+    value="all"
+  >
+    <option
+      value="all"
+    >
+      All
+    </option>
+    <option
+      value="expense"
+    >
+      Expenditure
+    </option>
+    <option
+      value="saving"
+    >
+      Saving
+    </option>
+  </select>
+  <select
+    onChange={[Function]}
     value="date"
   >
     <option
@@ -115,6 +135,26 @@ exports[`should render ExpenseListFilter on filter2 1`] = `
     type="text"
     value="rent"
   />
+  <select
+    onChange={[Function]}
+    value="expense"
+  >
+    <option
+      value="all"
+    >
+      All
+    </option>
+    <option
+      value="expense"
+    >
+      Expenditure
+    </option>
+    <option
+      value="saving"
+    >
+      Saving
+    </option>
+  </select>
   <select
     onChange={[Function]}
     value="amount"

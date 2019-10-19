@@ -32,10 +32,31 @@ const setEndDate = (date) => {
     }
 }
 
-module.exports={
+const setCategoryAll = () => {
+    return {
+        type: 'SET_CATEGORY_ALL'
+    }
+}
+
+const setCategoryExpense = () => {
+    return {
+        type: 'SET_CATEGORY_EXPENSE'
+    }
+}
+
+const setCategorySaving = () => {
+    return {
+        type: 'SET_CATEGORY_SAVING'
+    }
+}
+
+module.exports = {
     setTextFilter,
     sortByAmount,
     sortByDate,
     setStartDate,
-    setEndDate
+    setEndDate,
+    setCategoryAll,
+    setCategoryExpense,
+    setCategorySaving
 }

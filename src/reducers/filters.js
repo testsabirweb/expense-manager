@@ -1,10 +1,11 @@
-const moment=require('moment')
+const moment = require('moment')
 
 const filtersReducersDefault = {
     text: '',
     sortBy: 'date',
     startDate: moment().startOf('month'),
-    endDate: moment().endOf('month')
+    endDate: moment().endOf('month'),
+    category: 'all'
 }
 
 const filtersReducers = (state = filtersReducersDefault, action) => {
@@ -34,9 +35,24 @@ const filtersReducers = (state = filtersReducersDefault, action) => {
                 ...state,
                 endDate: action.endDate
             }
+        case 'SET_CATEGORY_ALL':
+            return {
+                ...state,
+                category: 'all'
+            }
+        case 'SET_CATEGORY_EXPENSE':
+            return {
+                ...state,
+                category: 'expense'
+            }
+        case 'SET_CATEGORY_SAVING':
+            return {
+                ...state,
+                category: 'saving'
+            }
         default:
             return state;
     }
 }
 
-module.exports=filtersReducers
+module.exports = filtersReducers
