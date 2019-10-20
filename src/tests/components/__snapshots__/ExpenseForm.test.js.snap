@@ -18,6 +18,21 @@ exports[`should render ExpenseForm correctly 1`] = `
       type="text"
       value=""
     />
+    <select
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value="expense"
+      >
+        Expenditure
+      </option>
+      <option
+        value="saving"
+      >
+        Saving
+      </option>
+    </select>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -124,6 +139,21 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
       type="text"
       value="15000"
     />
+    <select
+      onChange={[Function]}
+      value="expense"
+    >
+      <option
+        value="expense"
+      >
+        Expenditure
+      </option>
+      <option
+        value="saving"
+      >
+        Saving
+      </option>
+    </select>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -230,6 +260,21 @@ exports[`should render error for invalid form submission 1`] = `
       type="text"
       value=""
     />
+    <select
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value="expense"
+      >
+        Expenditure
+      </option>
+      <option
+        value="saving"
+      >
+        Saving
+      </option>
+    </select>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -339,6 +384,21 @@ exports[`should render error for invalid form submission 2`] = `
       type="text"
       value=""
     />
+    <select
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value="expense"
+      >
+        Expenditure
+      </option>
+      <option
+        value="saving"
+      >
+        Saving
+      </option>
+    </select>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}

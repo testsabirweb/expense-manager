@@ -10,6 +10,7 @@ class ExpenseForm extends React.Component {
             description: props.expense ? props.expense.description : '',
             note: props.expense ? props.expense.note : '',
             amount: props.expense ? props.expense.amount.toString() : '',
+            category: props.expense ? props.expense.category : '',
             createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
             calendarFocused: false,
             error: ''
@@ -79,9 +80,18 @@ class ExpenseForm extends React.Component {
                 description: this.state.description,
                 amount: parseFloat(this.state.amount, 10),
                 createdAt: this.state.createdAt.valueOf(),//valueOf()is a method from moment.js which returns the unix time stamp
-                note: this.state.note
+                note: this.state.note,
+                category: this.state.category ? this.state.category : 'expense'
             })
         }
+    }
+    onCategoryChange = (e) => {
+        const category = e.target.value
+        this.setState(() => {
+            return {
+                category
+            }
+        })
     }
     render() {
         return (
@@ -101,6 +111,13 @@ class ExpenseForm extends React.Component {
                         value={this.state.amount}
                         onChange={this.onAmountChange}
                     />
+                    <select
+                        value={this.state.category}
+                        onChange={this.onCategoryChange}
+                    >
+                        <option value="expense">Expenditure</option>
+                        <option value="saving">Saving</option>
+                    </select>
                     <SingleDatePicker
                         date={this.state.createdAt}
                         onDateChange={this.onDateChange}

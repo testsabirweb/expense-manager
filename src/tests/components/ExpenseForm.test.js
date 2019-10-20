@@ -72,7 +72,8 @@ test('should call onSubmit form for valid form submission', () => {
     description: expenses[0].description,
     amount: expenses[0].amount,
     note: expenses[0].note,
-    createdAt: expenses[0].createdAt
+    createdAt: expenses[0].createdAt,
+    category: expenses[0].category
   })
 })
 
@@ -90,5 +91,23 @@ test('should set calender focus on date change', () => {
   wrapper.find('SingleDatePicker').prop('onFocusChange')({ focused });
   expect(wrapper.state('calendarFocused')).toEqual(focused)
 
+})
+
+test('should set category change to expense', () => {
+  const value = 'expense'
+  const wrapper = shallow(<ExpenseForm />)
+  wrapper.find('select').simulate('change', {
+    target: { value }
+  });
+  expect(wrapper.state('category')).toBe(value);
+})
+
+test('should set category change to saving', () => {
+  const value = 'saving'
+  const wrapper = shallow(<ExpenseForm />)
+  wrapper.find('select').simulate('change', {
+    target: { value }
+  });
+  expect(wrapper.state('category')).toBe(value);
 })
 
