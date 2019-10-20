@@ -6,8 +6,8 @@ exports[`should render expense summary with 1 expense  1`] = `
   1
    
   expense
-   totalling 
-  $145.00
+   totalling of ₹ 
+  145.00
 </div>
 `;
 
@@ -17,7 +17,7 @@ exports[`should render expense summary with multiple expense  1`] = `
   10
    
   expenses
-   totalling 
-  $147,545,556.00
+   totalling of ₹ 
+  147,545,556.00
 </div>
 `;

@@ -8,10 +8,11 @@ test('should return 0 if no expenses', () => {
 
 test('should add up single expense', () => {
     const res=selectExpenseTotal([expenses[0]])
-    expect(res).toBe(159)
+    expect(res).toBe(-159)
 })
 
 test('should add up multiple expense', () => {
     const res=selectExpenseTotal(expenses)
-    expect(res).toBe(15204)
+    expect(res).toBe(-15114)
 })
+

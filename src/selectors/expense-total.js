@@ -1,5 +1,11 @@
 export default (expenses) => {
-    return expenses
-        .map((expense) => expense.amount)
-        .reduce((sum, value) => sum + value, 0)
+    let total = 0;
+    expenses.forEach((expense) => {
+        if (expense.category === 'expense') {
+            total = total - expense.amount
+        } else {
+            total = total + expense.amount
+        }
+    });
+    return total
 }

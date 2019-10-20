@@ -5,10 +5,10 @@ import selectExpenses from './../selectors/expenses'
 import selectExpensesTotal from './../selectors/expense-total'
 export const ExpensesSummary = ({ expensesCount, expensesTotal }) => {
     const expenseWord = expensesCount === 1 ? 'expense' : 'expenses'
-    const formatedExpensesTotal=numeral(expensesTotal).format('$0,0.00')
+    const formatedExpensesTotal=numeral(expensesTotal).format('0,0.00')
     return (
         <div>
-            viewing {expensesCount} {expenseWord} totalling {formatedExpensesTotal}
+            viewing {expensesCount} {expenseWord} totalling of ₹ {formatedExpensesTotal}
         </div>
     )
 }
