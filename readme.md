@@ -1,7 +1,19 @@
-# Git Commands
+#EXPENSE-TRACKER
 
-git init - Create a new git repo
-git status - View the changes to your project code
-git add - Add files to staging area
-git commit - Creates a new commit with files from staging area
-git log - View recent commits
+#Technology used
+•	Node.js :For back end  development
+•	React.js For front end development
+•	Firebase: For database management and Authentication
+•	Express.js: For fast track development of server-based applications.
+•	Jest :For testing. 
+•	Git and Heroku: for version control and deployment.
+
+#Starting guide
+just clone the repository and run the following commands in the command prompt.
+
+npm install =>to install all dependencies.
+yarn run dev-server => for running in development mode.
+yarn run test -- --watch =>for running test suite.
+
+#Final production version:-
+https://sabir-expense-app.herokuapp.com/
