@@ -21,13 +21,15 @@ console.log('app.js is running...........')
 const state = store.getState()
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
 
+import LoadingPage from './components/LoadingPage'
+
 const jsx = (
     <Provider store={store} >
         <AppRouter />
     </Provider>
 )
 
-ReactDOM.render(<p>loading....</p>, appRoot)
+ReactDOM.render(<LoadingPage />, appRoot)
 
 let hasRendered = false;
 const renderApp = () => {

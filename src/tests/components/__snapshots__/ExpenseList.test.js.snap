@@ -1,41 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    amount={159}
-    category="expense"
-    createdAt={0}
-    description="gum"
-    id="1"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={15000}
-    category="expense"
-    createdAt={-345600000}
-    description="rent"
-    id="2"
-    key="2"
-    note=""
-  />
-  <ExpenseListItem
-    amount={45}
-    category="saving"
-    createdAt={345600000}
-    description="coffee"
-    id="3"
-    key="3"
-    note=""
-  />
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={159}
+      category="expense"
+      createdAt={0}
+      description="gum"
+      id="1"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={15000}
+      category="expense"
+      createdAt={-345600000}
+      description="rent"
+      id="2"
+      key="2"
+      note=""
+    />
+    <ExpenseListItem
+      amount={45}
+      category="saving"
+      createdAt={345600000}
+      description="coffee"
+      id="3"
+      key="3"
+      note=""
+    />
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList with no expenses 1`] = `
-<div>
-  <p>
-    No expenses
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No Expenses
+      </span>
+    </div>
+  </div>
 </div>
 `;

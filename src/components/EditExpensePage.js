@@ -15,14 +15,22 @@ export class EditExpensePage extends React.Component {
     render() {
         return (
             <div>
-                <ExpenseForm
-                    expense={this.props.expense}
-                    onSubmit={this.onSubmit}
-                />
-                <button
-                    onClick={this.onClick}
-                > REMOVE
+                <div className="page-header">
+                    <div className="content-container">
+                        <h2 className="content-container__title">Edit Expense</h2>
+                    </div>
+                </div>
+                <div className="content-container">
+                    <ExpenseForm
+                        expense={this.props.expense}
+                        onSubmit={this.onSubmit}
+                    />
+                    <button
+                        className="button button--secondary"
+                        onClick={this.onClick}
+                    > Remove Expense
                 </button>
+                </div>
             </div>
         )
     }
@@ -35,11 +43,11 @@ const mapStateToProps = (state, props) => {
         })
     }
 }
-const mapDispatchToProps = (dispatch,props) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
-        startEditExpense:(id,expense)=>dispatch(startEditExpense(id,expense)),
-        startRemoveExpense:(data)=>dispatch(startRemoveExpense(data))
+        startEditExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
+        startRemoveExpense: (data) => dispatch(startRemoveExpense(data))
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(EditExpensePage)
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage)

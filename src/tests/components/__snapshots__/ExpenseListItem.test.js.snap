@@ -3,17 +3,27 @@
 exports[`should render ExpenseListItem with expenses 1`] = `
 <div>
   <Link
+    className="list-item"
     to="/edit/1"
   >
-    <h3>
-      gum
+    <div>
+      <h3
+        className="list-item__title"
+      >
+        gum
+      </h3>
+      <span
+        className="list-item__sub-title"
+      >
+        01/Jan/1970
+      </span>
+    </div>
+    <h3
+      className="list-item__data"
+    >
+      ₹ 
+      159.00
     </h3>
   </Link>
-  <p>
-    ₹ 
-    159.00
-    -
-    01/Jan/1970
-  </p>
 </div>
 `;
